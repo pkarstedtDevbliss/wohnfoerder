@@ -1,4 +1,4 @@
 name: wohnfoerder_test
-description: A sample web application, helping to get an overview to amount of german riester aid account.
+description: A sample web application, helping to get an overview to amount of german home subsidy account.
 dependencies:
   browser: any
