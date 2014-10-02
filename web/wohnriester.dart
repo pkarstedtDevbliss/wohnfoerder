@@ -2,10 +2,13 @@ import 'dart:html';
 
 InputElement inputSavery;
 InputElement inputSave;
-InputElement inputLifeTime;
+InputElement inputCreditEnd;
 InputElement inputSaveCredit;
+InputElement inputSaveryStart;
+InputElement inputCreditStart;
 
 TableElement resultTable;
+LabelElement labelFinishedSavery;
 
 void main() {
   querySelector("#calcButton").onClick.listen(calculate);
@@ -16,21 +19,32 @@ void calculate(MouseEvent event) {
   resultTable.children.clear();
   inputSavery = querySelector("#savery");
   inputSave = querySelector("#save");
-  inputLifeTime = querySelector("#lifetime");
+  inputCreditEnd = querySelector("#creditend");
   inputSaveCredit = querySelector("#savecredit");
+  inputSaveryStart = querySelector("#saverystart");
+  inputCreditStart = querySelector("#creditstart");
+  labelFinishedSavery = querySelector("#result");
   
-  var tribute = 0.02;
+  var tributeCredit = 0.02;
+  var tributeSavery = 0.01;
   var savery = inputSavery.valueAsNumber;
   var save = inputSave.valueAsNumber;
-  var lifeTime = inputLifeTime.valueAsNumber;
   var saveCredit= inputSaveCredit.valueAsNumber;
-  var erg = saveCredit;
+  var erg = 0;
   var sumSavery = savery + save;
+  var svt = inputCreditStart.valueAsNumber - inputSaveryStart.valueAsNumber;
+  var supportedSave = sumSavery;
+  var lifeTime = inputCreditEnd.valueAsNumber - inputCreditStart.valueAsNumber;
+  
+  for (int i=1; i < svt +1;i++) {
+    supportedSave = supportedSave + (supportedSave * tributeSavery);
+  }
+  labelFinishedSavery.text = "Verzinstes Riesterguthaben bei Zuteilung: " + supportedSave;
   
   for (int i=1; i < lifeTime + 1; i++) {
     var tributeAmount = 0.00;
-    erg = erg + sumSavery;
-    tributeAmount = erg * tribute;
+    erg = erg + supportedSave;
+    tributeAmount = erg * tributeCredit;
     erg = erg + tributeAmount;
     
     var row = new TableRowElement();
