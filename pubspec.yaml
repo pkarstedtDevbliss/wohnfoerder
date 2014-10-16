@@ -1,4 +1,6 @@
 name: wohnfoerder_test
+version: 0.0.1
+author: Philipp Karstedt <philipp.karstedt@devbliss.com>
 description: A sample web application, helping to get an overview to amount of german home subsidy account.
 dependencies:
   browser: any

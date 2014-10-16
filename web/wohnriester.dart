@@ -1,4 +1,5 @@
 import 'dart:html';
+//import 'package:unittest/unittest.dart';
 
 InputElement inputSavery;
 InputElement inputSave;
@@ -11,6 +12,7 @@ TableElement resultTable;
 LabelElement labelFinishedSavery;
 
 void main() {
+  //test('wohnriester', () => expect(1, 2));
   querySelector("#calcButton").onClick.listen(calculate);
   resultTable = querySelector("#wohnfoerder_konto");
 }
@@ -39,7 +41,7 @@ void calculate(MouseEvent event) {
   for (int i=1; i < svt +1;i++) {
     supportedSave = supportedSave + (supportedSave * tributeSavery);
   }
-  labelFinishedSavery.text = "Verzinstes Riesterguthaben bei Zuteilung: " + supportedSave;
+  labelFinishedSavery.text = "Verzinstes Riesterguthaben bei Zuteilung: " + supportedSave.roundToDouble().toString();
   
   for (int i=1; i < lifeTime + 1; i++) {
     var tributeAmount = 0.00;
